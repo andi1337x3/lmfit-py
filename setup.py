@@ -1,42 +1,45 @@
-#!/usr/bin/env python
+from setuptools import setup, find_packages
+from setuptools.dist import Distribution
 
-from setuptools import setup
 
-long_desc = """A library for least-squares minimization and data fitting in
-Python.  Built on top of scipy.optimize, lmfit provides a Parameter object
-which can be set as fixed or free, can have upper and/or lower bounds, or
-can be written in terms of algebraic constraints of other Parameters.  The
-user writes a function to be minimized as a function of these Parameters,
-and the scipy.optimize methods are used to find the optimal values for the
-Parameters.  The Levenberg-Marquardt (leastsq) is the default minimization
-algorithm, and provides estimated standard errors and correlations between
-varied Parameters.  Other minimization methods, including Nelder-Mead's
-downhill simplex, Powell's method, BFGS, Sequential Least Squares, and
-others are also supported.  Bounds and constraints can be placed on
-Parameters for all of these methods.
+class BinaryDistribution(Distribution):
+    """
+    TODO: Sense of this redefinition? - Max 09.10.18
+    """
+    def is_pure(self):
+        """
+        TODO: Sense of this redefinition? - Max 09.10.18
+        """
+        return False
+#  Tutorials:
+#       http://www.ewencp.org/blog/a-brief-introduction-to-packaging-python/
+#       https://pythonhosted.org/setuptools/setuptools.html#using-find-packages
+#       http://stackoverflow.com/questions/4740473/setup-py-examples
+#       https://docs.python.org/2/distutils/setupscript.html
+#       https://docs.python.org/3.4/distutils/builtdist.html
+#       http://lucumr.pocoo.org/2014/1/27/python-on-wheels/
 
-In addition, methods for explicitly calculating confidence intervals are
-provided for exploring minmization problems where the approximation of
-estimating Parameter uncertainties from the covariance matrix is
-questionable. """
+
+# Define excluded packages:
+EXCLUDED_PACKAGES = []
 
 setup(name='lmfit',
-      use_scm_version={
-          'write_to': 'lmfit/version.py',
-          'version_scheme': 'post-release'},
+      #use_scm_version={
+      #    'write_to': 'lmfit/version.py',
+      #    'version_scheme': 'post-release'},
       author='LMFit Development Team',
       author_email='matt.newville@gmail.com',
       url='https://lmfit.github.io/lmfit-py/',
-      download_url='https://lmfit.github.io//lmfit-py/',
+      # download_url='https://lmfit.github.io//lmfit-py/',
       setup_requires=['setuptools_scm'],
       install_requires=['asteval>=0.9.22',
                         'numpy>=1.18',
                         'scipy>=1.3',
                         'uncertainties>=3.0.1'],
       python_requires='>=3.6',
-      license='BSD-3',
+      license='BSD',
       description="Least-Squares Minimization with Bounds and Constraints",
-      long_description=long_desc,
+      #long_description=long_desc,
       platforms=['Windows', 'Linux', 'Mac OS X'],
       classifiers=['Development Status :: 5 - Production/Stable',
                    'Intended Audience :: Science/Research',

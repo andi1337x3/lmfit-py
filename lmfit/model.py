@@ -1260,7 +1260,7 @@ def _buildmodel(state, funcdefs=None):
         return CompositeModel(lmodel, rmodel, getattr(operator, op))
 
 
-def save_modelresult(modelresult, fname):
+def save_modelresult(modelresult, fname, **kws):
     """Save a ModelResult to a file.
 
     Parameters
@@ -1272,7 +1272,7 @@ def save_modelresult(modelresult, fname):
 
     """
     with open(fname, 'w') as fout:
-        modelresult.dump(fout)
+        modelresult.dump(fout, **kws)
 
 
 def load_modelresult(fname, funcdefs=None):

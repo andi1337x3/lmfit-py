@@ -43,4 +43,4 @@ from .printfuncs import (ci_report, fit_report, report_ci, report_errors,
 from .model import Model, CompositeModel
 from . import lineshapes, models
 
-from lmfit.version import version as __version__
+# from lmfit.version import version as __version__
